@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cliente | Ticket{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9aaebd;">
+    <span class="navbar-brand mb-0 h1">Cliente</span>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-link" href="{{path('app_user')}}">Inicio</a>
+        <a class="nav-link text-light" href="{{path('app_logout')}}"><span class="bi bi-box-arrow-right mr-1"></span>Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+ 
+  <div class="container mt-5 pt-5">
+    <div class="row">
+      <div class="col-12 col-sm-7 col-md-6 m-auto">
+        <div class="card border-0 shadow">
+          <div class="card-body">
+           <h1>Generar Ticket</h1>
+          <form method="post">
+                {{form_start(form)}}
+                <label>Descripción de la queja: </label>
+                {{form_widget(form.descripcion)}}
+                <button type="submit" class="btn btn-lg btn-primary">Reportar queja</button>
+                {{form_end(form)}}
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

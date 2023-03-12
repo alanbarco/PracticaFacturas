@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facturacion | Tickets{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9aaebd;">
+    <span class="navbar-brand mb-0 h1">Facturacion</span>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+      <a class="nav-link" href="{{path('app_facturacion_dashboard')}}">Facturas</a>
+        <a class="nav-link text-light" href="{{path('app_logout')}}"><span class="bi bi-box-arrow-right mr-1"></span>Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+<h1>Tickets</h1>
+{% if not lista is empty %}
+
+  <table class="table">
+<thead>
+  <tr>
+    <th>ID Ticket</th>
+    <th>Descripcion</th>
+     <th>Horas invertidas</th>
+    <th>Tipo de trabajo</th>
+     <th>Acciones</th>
+  </tr>
+</thead>
+<tbody>
+{% for ticket in lista %}
+        <tr>
+        <td>{{ticket.idTicket}}</td>
+        <td>{{ticket.descripcion}}</td>
+        <td>{{ticket.horasInv}}</td>
+        {% if ticket.idTipo != null %}
+            <td>{{ticket.idTipo.descripcion}}</td>
+        {% endif %}
+        <td>
+            <a href="{{path('app_facturacion_revisar', {id:ticket.idTicket})}}" class="btn btn-warning">Generar Factura</a>
+        </td>
+        </tr>
+        {% endfor %}
+</tbody>
+</table>
+{% else %}
+<p>No existen tickets para presentar.</p>
+{% endif %}
+{% endblock %}

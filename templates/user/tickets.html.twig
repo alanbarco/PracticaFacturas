@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuario | Tickets{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9aaebd;">
+    <span class="navbar-brand mb-0 h1">Cliente</span>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-link" href="{{path('app_user')}}">Facturas</a>
+        <a class="nav-link" href="{{path('app_ticket_cliente')}}">Crear Ticket</a>
+        <a class="nav-link text-light" href="{{path('app_logout')}}"><span class="bi bi-box-arrow-right mr-1"></span>Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+<h1>Tickets</h1>
+{% if not lista is empty %}
+
+<table class="table">
+<thead>
+  <tr>
+    <th>ID ticket</th>
+    <th>Descripción de la queja</th>
+  </tr>
+</thead>
+<tbody>
+  {%for ticket in lista %}
+<tr>
+  <td>{{ticket.idTicket}}</td>
+  <td>{{ticket.descripcion}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<p>No hay tickets para presentar.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tecnico | Revision{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9aaebd;">
+    <span class="navbar-brand mb-0 h1">Tecnico</span>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-link" href="{{path('app_tecnico_dashboard')}}">Inicio</a>
+        <a class="nav-link text-light" href="{{path('app_logout')}}"><span class="bi bi-box-arrow-right mr-1"></span>Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-5 pt-5">
+    <div class="row">
+      <div class="col-12 col-sm-7 col-md-6 m-auto">
+        <div class="card border-0 shadow">
+          <div class="card-body">
+          <form method="post">
+                {{form_start(form)}}
+                <label>Tipo de trabajo: </label>
+                {{form_widget(form.tipo)}}
+                <label>Cantidad de horas invertidas: </label>
+                {{form_widget(form.horasInv)}}
+                <button type="submit" class="btn btn-lg btn-success">Aceptar</button>
+                {{form_end(form)}}
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

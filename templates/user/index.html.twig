@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuario | Home{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9aaebd;">
+    <span class="navbar-brand mb-0 h1">Cliente</span>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-link" href="{{path('app_ticket_cliente')}}">Crear Ticket</a>
+        <a class="nav-link" href="{{path('app_cliente_tickets')}}">Ver Tickets</a>
+        <a class="nav-link text-light" href="{{path('app_logout')}}"><span class="bi bi-box-arrow-right mr-1"></span>Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+<h1>Facturas</h1>
+{% if not lista is empty %}
+
+<table class="table">
+<thead>
+  <tr>
+    <th>ID ticket</th>
+    <th>Descripción de la queja</th>
+    <th>Descripcion</th>
+    <th>Costo Total</th>
+  </tr>
+</thead>
+<tbody>
+  {%for factura in lista %}
+<tr>
+  <td>{{factura.idTicket.idTicket}}</td>
+  <td>{{factura.idTicket.descripcion}}</td>
+  <td>{{factura.idTicket.idTipo.descripcion}}</td>
+  <td>{{factura.costoTotal}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<p>No tiene facturas.</p>
+
+{% endif %}
+{% endblock %}
